@@ -105,7 +105,6 @@
                     <h1>Mostrar Evaluacion</h1>
                 </div>
                 <div class="contenido">
-                    <button @click="elegirTienda(elegida)">actualizar</button>
                     <p>------------------------TIENDA----------------------</p>
                     <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
                 </div>
@@ -117,7 +116,7 @@
                         <td> {{pregunta.pregunta}} </td>
                         <td>{{pregunta.respuesta}}</td>
                         <td v-if="pregunta.respuesta==='bien'">
-                            <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)*10}}</span>
+                            <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)}}</span>
                         </td>
                         <td v-else-if="pregunta.respuesta==='regular'">
                             <span v-bind:id="'pp'+pregunta.id">0</span>
@@ -128,7 +127,7 @@
                     </tr>
                 </table>
                 <p>---------------------VALORACION TOTAL------------------------- </p>
-                <p>{{calculototal}}</p>
+                <p> Valoración de la tienda: {{calculototal}}</p>
             </div>
         </div>
 
@@ -206,7 +205,7 @@
                 },
                 cargarEvaluacion: function () {
                     let formdata = new FormData();
-                    formdata.append("condicion", document.getElementById("vid").value)
+                    formdata.append("condicion", app.elegida.nombre)
                     axios.post("./api.php?accion=mostrarEvaluacion", formdata) //si hay formdata requiere post!!
                         .then(function (response) {
                             console.log(response)
@@ -215,7 +214,7 @@
                         })
                 },
                 modificarEvaluacion: function () {
-                    
+
                     let formdata = new FormData();
                     formdata.append("tienda", document.getElementById("vid").value)
                     formdata.append("r1001", document.getElementById("respuesta1001").value)
@@ -261,7 +260,14 @@
             computed: {
                 calculototal: function () {
                     var self = this;
-                    return 0
+                    var acum = 0;
+                    for (var i = 0; i < 20; i++) { //self.evaluacion.length
+                        if (self.evaluacion[i].respuesta == 'bien')     //Bien valorado
+                            acum += parseInt(self.evaluacion[i].peso);  //suma
+                        else if (self.evaluacion[i].respuesta == 'mal') //mal valorado
+                            acum -= parseInt(self.evaluacion[i].peso);  //resta
+                    }
+                    return acum;
                 }
             }
 
