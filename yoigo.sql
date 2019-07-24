@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 24-07-2019 a las 07:44:13
+-- Tiempo de generación: 24-07-2019 a las 15:04:03
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.23
 
@@ -39,28 +39,28 @@ CREATE TABLE `evaluaciones` (
 --
 
 INSERT INTO `evaluaciones` (`tienda`, `id_pregunta`, `respuesta`) VALUES
-('MasLife', 1001, 'bien'),
-('MasLife', 1002, 'regular'),
-('MasLife', 1003, 'bien'),
-('MasLife', 1004, 'regular'),
-('MasLife', 1005, 'bien'),
-('MasLife', 2001, 'regular'),
-('MasLife', 2002, 'bien'),
-('MasLife', 2003, 'regular'),
-('MasLife', 2004, 'bien'),
-('MasLife', 2005, 'regular'),
-('MasLife', 2006, 'bien'),
-('MasLife', 2007, 'regular'),
-('MasLife', 3001, 'bien'),
-('MasLife', 3002, 'regular'),
-('MasLife', 3011, 'bien'),
-('MasLife', 3012, 'regular'),
-('MasLife', 4001, 'bien'),
-('MasLife', 4002, 'regular'),
-('MasLife', 4003, 'bien'),
-('MasLife', 4004, 'regular'),
+('MasLife', 1001, 'regular'),
+('MasLife', 1002, 'bien'),
+('MasLife', 1003, 'regular'),
+('MasLife', 1004, 'bien'),
+('MasLife', 1005, 'regular'),
+('MasLife', 2001, 'bien'),
+('MasLife', 2002, 'regular'),
+('MasLife', 2003, 'bien'),
+('MasLife', 2004, 'regular'),
+('MasLife', 2005, 'bien'),
+('MasLife', 2006, 'regular'),
+('MasLife', 2007, 'bien'),
+('MasLife', 3001, 'regular'),
+('MasLife', 3002, 'bien'),
+('MasLife', 3011, 'regular'),
+('MasLife', 3012, 'bien'),
+('MasLife', 4001, 'regular'),
+('MasLife', 4002, 'bien'),
+('MasLife', 4003, 'regular'),
+('MasLife', 4004, 'bien'),
 ('YOIGO', 1001, 'bien'),
-('YOIGO', 1002, 'bien'),
+('YOIGO', 1002, 'regular'),
 ('YOIGO', 1003, 'bien'),
 ('YOIGO', 1004, 'bien'),
 ('YOIGO', 1005, 'bien'),
@@ -155,9 +155,9 @@ CREATE TABLE `tiendas` (
 --
 
 INSERT INTO `tiendas` (`nombre`, `ubicacion`, `observacion`) VALUES
-('MasLife', 'Lebara', 'nueva'),
+('MasLife', 'Lebara', 'Nueva Apertura 24/7'),
 ('YOIGO', 'PUERTO', 'ABIERTA'),
-('yoigo2', 'port2', 'cerrrada');
+('yoigo2', 'Av Serreria', 'Inventada');
 
 --
 -- Índices para tablas volcadas

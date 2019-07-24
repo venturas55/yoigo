@@ -7,16 +7,12 @@ body {
     background-attachment: fixed;
 }
 
-
-body,
-input,
-select,
-textarea {
+body,input,select,textarea {
     font-family: "Merriweather", Georgia, serif;
     font-size: 1.0em;
 }
 
-button {
+button{
     height: 40px;
     color: white;
     font-weight: 800;
@@ -39,9 +35,23 @@ button {
     background-color: rgb(92, 77, 88);
     opacity: 0.85;
 }
+table {
+    padding:10px;
+    margin:10px;
+    text-align: center;
+    border: 2px solid black;
+    padding: 5px;
+    width: 100%;
+}
+
+#app>table {
+    background: rgb(250, 158, 230);
+}
 
 tbody tr:hover {
-    background-color: blueviolet
+    background-color: blueviolet;
+    color: white;
+    font-weight: 800;
 }
 
 .contenedor {
@@ -58,9 +68,27 @@ tbody tr:hover {
     padding: 5px;
     width: auto;
     text-align: center;
+    position: fixed;
+    top: 100px;
+    left: 30%;
 }
 
-.close {
+.top {
+    border: 2px solid rosybrown;
+    /*  background: rgb(218, 67, 238); */
+}
+
+.middle {
+    border: 2px solid rosybrown;
+    /*    background: rgb(218, 107, 184); */
+}
+
+.bottom {
+    border: 2px solid rosybrown;
+    background: rgb(141, 38, 110);
+}
+
+.close{
     float: right;
 }
 

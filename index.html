@@ -10,7 +10,9 @@
 <body>
 
     <nav class="header">
-        <h1>LISTADO TIENDAS</h1>
+        <h1>LISTADO TIENDAS </h1>
+        <button class="btnheader"> <a href="preguntas.html">EDITAR PREGUNTAS</a> </button>
+        <button class="btnheader"> <a href="tiendas.html">EDITAR TIENDAS</a> </button>
     </nav>
 
     <div id="app">
@@ -104,46 +106,53 @@
                     <h1>Mostrar Evaluacion</h1>
                 </div>
                 <div class="contenido">
-                    <p>------------------------TIENDA----------------------</p>
-                    <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
+                    <div class="top">
+                        <p>------------------------TIENDA----------------------</p>
+                        <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
+                    </div>
+                    <div class="middle">
+                        <table>
+                            <th>
+                            <td colspan="3"> EVALUACION</td>
+                            </th>
+                            <tr v-for="pregunta in evaluacion">
+                                <td> {{pregunta.id_pregunta}} </td>
+                                <td> {{pregunta.pregunta}} </td>
+                                <td>{{pregunta.respuesta}}</td>
+                                <td v-if="pregunta.respuesta==='bien'">
+                                    <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)}}</span>
+                                </td>
+                                <td v-else-if="pregunta.respuesta==='regular'">
+                                    <span v-bind:id="'pp'+pregunta.id">0</span>
+                                </td>
+                                <td v-else-if="pregunta.respuesta==='mal'">
+                                    <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)*-1}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="bottom">
+                        <p>---------------------VALORACION TOTAL------------------------- </p>
+                        <p> Valoración de la tienda: {{calculototal}}</p>
+                    </div>
                 </div>
-                <p>------------------------EVALUACION----------------------</p>
-                <table>
-                    <tr v-for="pregunta in evaluacion">
-
-                        <td> {{pregunta.id_pregunta}} </td>
-                        <td> {{pregunta.pregunta}} </td>
-                        <td>{{pregunta.respuesta}}</td>
-                        <td v-if="pregunta.respuesta==='bien'">
-                            <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)}}</span>
-                        </td>
-                        <td v-else-if="pregunta.respuesta==='regular'">
-                            <span v-bind:id="'pp'+pregunta.id">0</span>
-                        </td>
-                        <td v-else-if="pregunta.respuesta==='mal'">
-                            <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)*-1}}</span>
-                        </td>
-                    </tr>
-                </table>
-                <p>---------------------VALORACION TOTAL------------------------- </p>
-                <p> Valoración de la tienda: {{calculototal}}</p>
             </div>
-        </div>
 
-        <!-- eliminar item -->
-        <div class="contenedor" v-if="verEliminaItem">
-            <div class="modal">
-                <div class="header">
-                    <button class="close" @click="verEliminaItem=false">X</button>
-                    <h1>Eliminar tienda</h1>
-                </div>
-                <div class="contenido">
-                    <p> Está seguro de que desea borrar la tienda </p>
-                    <input type="hidden" id="did" name="did" v-model="elegida.nombre">
-                    <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
-                    <p>Esto también borrará su evaluacion</p>
-                    <button @click="verEliminaItem=false;eliminarTienda()">SI</button>
-                    <button @click="verEliminaItem=false">NO</button>
+            <!-- eliminar item -->
+            <div class="contenedor" v-if="verEliminaItem">
+                <div class="modal">
+                    <div class="header">
+                        <button class="close" @click="verEliminaItem=false">X</button>
+                        <h1>Eliminar tienda</h1>
+                    </div>
+                    <div class="contenido">
+                        <p> Está seguro de que desea borrar la tienda </p>
+                        <input type="hidden" id="did" name="did" v-model="elegida.nombre">
+                        <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
+                        <p>Esto también borrará su evaluacion</p>
+                        <button @click="verEliminaItem=false;eliminarTienda()">SI</button>
+                        <button @click="verEliminaItem=false">NO</button>
+                    </div>
                 </div>
             </div>
         </div>
