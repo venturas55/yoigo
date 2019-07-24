@@ -46,7 +46,6 @@
             </tbody>
         </table>
 
-        <!-- <input type="hidden" id="vid" name="vid" v-model="elegida.nombre"> -->
 
         <br>
         <!-- nuevo item -->
@@ -216,7 +215,7 @@
                 modificarEvaluacion: function () {
 
                     let formdata = new FormData();
-                    formdata.append("tienda", this.elegida.nombre)
+                    formdata.append("tienda", app.elegida.nombre)
                     formdata.append("r1001", document.getElementById("respuesta1001").value)
                     formdata.append("r1002", document.getElementById("respuesta1002").value)
                     formdata.append("r1003", document.getElementById("respuesta1003").value)
