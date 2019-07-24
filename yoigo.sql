@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 24-07-2019 a las 15:04:03
+-- Tiempo de generación: 24-07-2019 a las 15:31:11
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.23
 
@@ -79,26 +79,26 @@ INSERT INTO `evaluaciones` (`tienda`, `id_pregunta`, `respuesta`) VALUES
 ('YOIGO', 4002, 'bien'),
 ('YOIGO', 4003, 'bien'),
 ('YOIGO', 4004, 'bien'),
-('yoigo2', 1001, 'mal'),
-('yoigo2', 1002, 'mal'),
-('yoigo2', 1003, 'mal'),
-('yoigo2', 1004, 'mal'),
-('yoigo2', 1005, 'bien'),
-('yoigo2', 2001, 'mal'),
-('yoigo2', 2002, 'mal'),
-('yoigo2', 2003, 'mal'),
-('yoigo2', 2004, 'mal'),
-('yoigo2', 2005, 'mal'),
-('yoigo2', 2006, 'bien'),
-('yoigo2', 2007, 'bien'),
-('yoigo2', 3001, 'bien'),
-('yoigo2', 3002, 'bien'),
-('yoigo2', 3011, 'bien'),
-('yoigo2', 3012, 'bien'),
-('yoigo2', 4001, 'bien'),
-('yoigo2', 4002, 'bien'),
-('yoigo2', 4003, 'bien'),
-('yoigo2', 4004, 'bien');
+('YOIGO 2', 1001, 'mal'),
+('YOIGO 2', 1002, 'mal'),
+('YOIGO 2', 1003, 'mal'),
+('YOIGO 2', 1004, 'mal'),
+('YOIGO 2', 1005, 'bien'),
+('YOIGO 2', 2001, 'mal'),
+('YOIGO 2', 2002, 'mal'),
+('YOIGO 2', 2003, 'mal'),
+('YOIGO 2', 2004, 'mal'),
+('YOIGO 2', 2005, 'mal'),
+('YOIGO 2', 2006, 'bien'),
+('YOIGO 2', 2007, 'bien'),
+('YOIGO 2', 3001, 'bien'),
+('YOIGO 2', 3002, 'bien'),
+('YOIGO 2', 3011, 'bien'),
+('YOIGO 2', 3012, 'bien'),
+('YOIGO 2', 4001, 'bien'),
+('YOIGO 2', 4002, 'bien'),
+('YOIGO 2', 4003, 'bien'),
+('YOIGO 2', 4004, 'bien');
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,7 @@ CREATE TABLE `preguntas` (
 --
 
 INSERT INTO `preguntas` (`id`, `pregunta`, `peso`) VALUES
-(1001, 'Rotulo', 1),
+(1001, 'Rotulo', 11),
 (1002, 'Escaparate', 1),
 (1003, 'Limpieza de la tienda', 1),
 (1004, 'PLV y maquetas', 1),
@@ -157,7 +157,7 @@ CREATE TABLE `tiendas` (
 INSERT INTO `tiendas` (`nombre`, `ubicacion`, `observacion`) VALUES
 ('MasLife', 'Lebara', 'Nueva Apertura 24/7'),
 ('YOIGO', 'PUERTO', 'ABIERTA'),
-('yoigo2', 'Av Serreria', 'Inventada');
+('YOIGO 2', 'Av Serreria', 'Inventada');
 
 --
 -- Índices para tablas volcadas
@@ -190,8 +190,8 @@ ALTER TABLE `tiendas`
 -- Filtros para la tabla `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
-  ADD CONSTRAINT `pregunta_FK` FOREIGN KEY (`id_pregunta`) REFERENCES `preguntas` (`id`),
-  ADD CONSTRAINT `tienda_FK` FOREIGN KEY (`tienda`) REFERENCES `tiendas` (`nombre`);
+  ADD CONSTRAINT `pregunta_FK` FOREIGN KEY (`id_pregunta`) REFERENCES `preguntas` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tienda_FK` FOREIGN KEY (`tienda`) REFERENCES `tiendas` (`nombre`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

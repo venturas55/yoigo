@@ -4,6 +4,12 @@ class ApptivaDB{
     private $usuario = "root";
     private $clave = "administrador";
     private $dbname = "yoigo";
+
+    /* private $host = "adriandecradmin.mysql.db";
+    private $usuario = "adriandecradmin";
+    private $clave = "Administrador1";
+    private $dbname = "adriandecradmin"; */
+
     public $conexion;
     public function __construct()
     {
