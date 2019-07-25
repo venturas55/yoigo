@@ -5,15 +5,18 @@
     <title>Carla ODLC Yoigo</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js"></script>
 </head>
 
 <body>
-
-    <nav class="header">
-        <h1>LISTADO TIENDAS </h1>
-        <button class="btnheader"> <a href="preguntas.html">EDITAR PREGUNTAS</a> </button>
-        <button class="btnheader"> <a href="tiendas.html">EDITAR TIENDAS</a> </button>
-    </nav>
+       
+    <div class="tabcontent">
+        <img src="./img/Yoigo_logo_logotype_pink.png" alt="" id="logo">
+        <h1>APP DE GESTION DE TIENDAS</h1>
+    </div>
+    <button class="tablink" onclick="javascript:location.href='preguntas.html'">EDITAR PREGUNTAS</button>
+    <button class="tablink" onclick="javascript:location.href='tiendas.html'">EDITAR TIENDAS</button>
+    <button class="tablink" onclick="javascript:location.href='./log-out.php'">LOG OUT</button>
 
     <div id="app">
         <button @click="nuevoItem=true">NUEVA TIENDA</button>
@@ -157,7 +160,7 @@
             </div>
         </div>
     </div>
-    <nav class="footer">Carla Narcisa Oliveira de la Calle. <span class="copyleft"> &copy; </span> 2018 · Todos los
+    <nav class="footer">Carla Narcisa Oliveira de la Calle. <span class="copyleft"> &copy; </span> OdlC 2019 · Todos los
         derechos reservados</nav>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
