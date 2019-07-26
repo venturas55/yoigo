@@ -24,7 +24,7 @@
         </div>
 
         <div class="item">
-            <form method="post" class="signin" action="check_login.php">
+            <form method="post" class="signin" action="control.php">
                 <fieldset>
                     <div>
                         <label>

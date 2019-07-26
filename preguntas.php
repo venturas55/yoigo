@@ -1,3 +1,7 @@
+<?php
+    include './seguridad.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +15,7 @@
 
     <nav class="header">
         <h1>LISTADO PREGUNTAS</h1>
-        <button> <a href="app.html">EVALUACIONES</a> </button>
+        <button> <a href="app.php">EVALUACIONES</a> </button>
     </nav>
 
     <div id="app">

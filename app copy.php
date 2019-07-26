@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+    include_once './funciones.php';
+?>
+
+<!-- <!DOCTYPE html> -->
 <html lang="es">
 
 <head>
@@ -7,16 +12,19 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js"></script>
 </head>
-
 <body>
+    <?php
+     if (isset($_SESSION[$miprivilegio])) {
+        if($_SESSION[$miprivilegio]=="admin")
+        echo '
        
     <div class="tabcontent">
         <img src="./img/Yoigo_logo_logotype_pink.png" alt="" id="logo">
         <h1>APP DE GESTION DE TIENDAS</h1>
     </div>
-    <button class="tablink" onclick="javascript:location.href='preguntas.html'">EDITAR PREGUNTAS</button>
-    <button class="tablink" onclick="javascript:location.href='tiendas.html'">EDITAR TIENDAS</button>
-    <button class="tablink" onclick="javascript:location.href='./log-out.php'">LOG OUT</button>
+    <button class="tablink" onclick="javascript:location.href=\'preguntas.php\'">EDITAR PREGUNTAS</button>
+    <button class="tablink" onclick="javascript:location.href=\'tiendas.php\'">EDITAR TIENDAS</button>
+    <button class="tablink" onclick="javascript:location.href=\'./log-out.php\'">LOG OUT</button>
 
     <div id="app">
         <button @click="nuevoItem=true">NUEVA TIENDA</button>
@@ -86,7 +94,7 @@
                             <td>{{pregunta.pregunta}}</td>
                             <td>{{pregunta.peso}}</td>
                             <td>{{pregunta.respuesta}}</td>
-                            <td><select v-bind:id="'respuesta'+pregunta.id">
+                            <td><select v-bind:id="\'respuesta\'+pregunta.id">
                                     <option value="bien">Bien</option>
                                     <option value="regular">Regular</option>
                                     <option value="mal">Mal</option>
@@ -122,14 +130,14 @@
                                 <td> {{pregunta.id_pregunta}} </td>
                                 <td> {{pregunta.pregunta}} </td>
                                 <td>{{pregunta.respuesta}}</td>
-                                <td v-if="pregunta.respuesta==='bien'">
-                                    <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)}}</span>
+                                <td v-if="pregunta.respuesta===\'bien\'">
+                                    <span v-bind:id="\'pp\'+pregunta.id">{{(pregunta.peso)}}</span>
                                 </td>
-                                <td v-else-if="pregunta.respuesta==='regular'">
-                                    <span v-bind:id="'pp'+pregunta.id">0</span>
+                                <td v-else-if="pregunta.respuesta===\'regular\'">
+                                    <span v-bind:id="\'pp\'+pregunta.id">0</span>
                                 </td>
-                                <td v-else-if="pregunta.respuesta==='mal'">
-                                    <span v-bind:id="'pp'+pregunta.id">{{(pregunta.peso)*-1}}</span>
+                                <td v-else-if="pregunta.respuesta===\'mal\'">
+                                    <span v-bind:id="\'pp\'+pregunta.id">{{(pregunta.peso)*-1}}</span>
                                 </td>
                             </tr>
                         </table>
@@ -273,9 +281,9 @@
                     var self = this;
                     var acum = 0;
                     for (var i = 0; i < 20; i++) { //self.evaluacion.length
-                        if (self.evaluacion[i].respuesta == 'bien')     //Bien valorado
+                        if (self.evaluacion[i].respuesta == \'bien\')     //Bien valorado
                             acum += parseInt(self.evaluacion[i].peso);  //suma
-                        else if (self.evaluacion[i].respuesta == 'mal') //mal valorado
+                        else if (self.evaluacion[i].respuesta == \'mal\') //mal valorado
                             acum -= parseInt(self.evaluacion[i].peso);  //resta
                     }
                     return acum;
@@ -284,7 +292,11 @@
 
         })
 
-    </script>
+    </script>';
+    else {
+        echo "kaka";
+    }
+
 </body>
 
 </html>
