@@ -41,5 +41,24 @@ function privilegio()  //Devuelve admin, san o none, en funcion del privilegio
         return 'admin';
     return 'none';
 }
+
+function cabecera(){
+    echo '
+    <div class="tabcontent">
+        <img src="./img/Yoigo_logo_logotype_pink.png" alt="" id="logo">
+        <h1>APP DE GESTION DE TIENDAS <span> Bienvenid@: '. $_SESSION["miusuario"].' </span></h1>
+    </div>
+    <button class="tablink" onclick="javascript:location.href=\'app.php\'">EVALUACIONES</button>
+    <button class="tablink" onclick="javascript:location.href=\'preguntas.php\'">EDITAR PREGUNTAS</button>
+    <button class="tablink" onclick="javascript:location.href=\'tiendas.php\'">EDITAR TIENDAS</button>
+    <button class="tablink" onclick="javascript:location.href=\'./log-out.php\'">LOG OUT</button>
+    ';
+}
+
+function pie(){
+    echo '    <nav class="footer">Carla Narcisa Oliveira de la Calle. <span class="copyleft"> &copy; </span> OdlC 2019 · Todos los
+    derechos reservados</nav>';
+
+}
 ?>
 

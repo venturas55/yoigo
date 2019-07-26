@@ -1,5 +1,6 @@
 <?php
     include './seguridad.php';
+    include './funciones.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,14 +10,21 @@
     <title>Carla ODLC Yoigo</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/style.css">
+    <style type="text/css">
+        body {
+            background: url(./img/coche.jpg) no-repeat center center;
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="header">
-        <h1>EDICION TIENDAS</h1>
-        <button> <a href="app.php">EVALUACIONES</a> </button>
-    </nav>
+<?php cabecera() ?>
 
     <div id="app">
         <br>
@@ -70,8 +78,7 @@
         </div>
     </div>
 
-    <nav class="footer">Carla Narcisa Oliveira de la Calle. <span class="copyleft"> &copy; </span>
-         2018 · Todos los derechos reservados</nav>
+    <?php pie() ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>

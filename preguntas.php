@@ -1,5 +1,6 @@
 <?php
     include './seguridad.php';
+    include './funciones.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,14 +10,21 @@
     <title>Carla ODLC Yoigo</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/style.css">
+    <style type="text/css">
+        body {
+            background: url(./img/calles.jpg) no-repeat center center;
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="header">
-        <h1>LISTADO PREGUNTAS</h1>
-        <button> <a href="app.php">EVALUACIONES</a> </button>
-    </nav>
+    <?php cabecera() ?>
 
     <div id="app">
         <button @click="nuevoItem=true">NUEVA PREGUNTA</button>
@@ -108,8 +116,8 @@
             </div>
         </div>
     </div>
-    <nav class="footer">Carla Narcisa Oliveira de la Calle. <span class="copyleft"> &copy; </span> 2018 · Todos los
-        derechos reservados</nav>
+    
+    <?php pie() ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
@@ -126,48 +134,48 @@
                 preguntas: [],
                 elegida: {},
             },
-            mounted: function () {
+            mounted: function() {
                 this.mostrarPreguntas()
             },
             filters: {
-                grupo: function (val) {
+                grupo: function(val) {
                     return val.charAt(0);
                 }
             },
             methods: {
-                insertarPregunta: function () {
+                insertarPregunta: function() {
                     let formdata = new FormData();
                     formdata.append("id", document.getElementById("id").value)
                     formdata.append("pregunta", document.getElementById("pregunta").value)
                     formdata.append("peso", document.getElementById("peso").value)
                     axios.post("./api.php?accion=insertarPregunta", formdata)
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                         })
                 },
-                mostrarPreguntas: function () {
+                mostrarPreguntas: function() {
                     axios.get("./api.php?accion=mostrarPreguntas")
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                             app.preguntas = response.data.respuesta
                         })
                 },
-                modificarPregunta: function () {
+                modificarPregunta: function() {
                     let formdata = new FormData();
                     formdata.append("idsel", app.elegida.id)
                     formdata.append("id", document.getElementById("modid").value)
                     formdata.append("pregunta", document.getElementById("modpregunta").value)
                     formdata.append("peso", document.getElementById("modpeso").value)
                     axios.post("./api.php?accion=modificarPregunta", formdata)
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                         })
                 },
-                eliminarPregunta: function () {
+                eliminarPregunta: function() {
                     let formdata = new FormData();
                     formdata.append("condicion", document.getElementById("did").value)
                     axios.post("./api.php?accion=eliminarPregunta", formdata)
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                         })
                 },
@@ -177,7 +185,6 @@
                 }
             }
         })
-
     </script>
 </body>
 

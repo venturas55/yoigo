@@ -1,5 +1,6 @@
 <?php
-    include './seguridad.php';
+include './seguridad.php';
+include './funciones.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,17 +11,21 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js"></script>
+    <style type="text/css">
+        body {
+            background: url(./img/playa.jpg) no-repeat center center;
+            background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 
 <body>
-       
-    <div class="tabcontent">
-        <img src="./img/Yoigo_logo_logotype_pink.png" alt="" id="logo">
-        <h1>APP DE GESTION DE TIENDAS <span> Bienvenid@: <?php echo $_SESSION["miusuario"] ?> </span></h1>
-    </div>
-    <button class="tablink" onclick="javascript:location.href='preguntas.php'">EDITAR PREGUNTAS</button>
-    <button class="tablink" onclick="javascript:location.href='tiendas.php'">EDITAR TIENDAS</button>
-    <button class="tablink" onclick="javascript:location.href='./log-out.php'">LOG OUT</button>
+
+    <?php cabecera() ?>
 
     <div id="app">
         <button @click="nuevoItem=true">NUEVA TIENDA</button>
@@ -164,8 +169,8 @@
             </div>
         </div>
     </div>
-    <nav class="footer">Carla Narcisa Oliveira de la Calle. <span class="copyleft"> &copy; </span> OdlC 2019 · Todos los
-        derechos reservados</nav>
+
+    <?php pie() ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
@@ -184,51 +189,51 @@
                 preguntas: [],
                 elegida: {},
             },
-            mounted: function () {
+            mounted: function() {
                 this.mostrartiendas(),
                     this.mostrarPreguntas()
             },
             filters: {
-                grupo: function (val) {
+                grupo: function(val) {
                     return val.charAt(0);
                 }
             },
             methods: {
-                insertarTienda: function () {
+                insertarTienda: function() {
                     let formdata = new FormData();
                     formdata.append("nombre", document.getElementById("nombre").value)
                     formdata.append("ubicacion", document.getElementById("ubicacion").value)
                     formdata.append("observacion", document.getElementById("observacion").value)
                     axios.post("./api.php?accion=insertarTienda", formdata)
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                         })
                 },
-                mostrartiendas: function () {
+                mostrartiendas: function() {
                     axios.get("./api.php?accion=mostrarTiendas")
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                             app.tiendas = response.data.respuesta
                         })
                 },
-                mostrarPreguntas: function () {
+                mostrarPreguntas: function() {
                     axios.get("./api.php?accion=mostrarPreguntas")
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                             app.preguntas = response.data.respuesta
                         })
                 },
-                cargarEvaluacion: function () {
+                cargarEvaluacion: function() {
                     let formdata = new FormData();
                     formdata.append("condicion", app.elegida.nombre)
                     axios.post("./api.php?accion=mostrarEvaluacion", formdata) //si hay formdata requiere post!!
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                             app.evaluacion = response.data.respuesta
                             app.total = response.data.total
                         })
                 },
-                modificarEvaluacion: function () {
+                modificarEvaluacion: function() {
 
                     let formdata = new FormData();
                     formdata.append("tienda", app.elegida.nombre)
@@ -253,16 +258,16 @@
                     formdata.append("r4003", document.getElementById("respuesta4003").value)
                     formdata.append("r4004", document.getElementById("respuesta4004").value)
                     axios.post("./api.php?accion=modificarEvaluacion", formdata)
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                         })
                 },
 
-                eliminarTienda: function () {
+                eliminarTienda: function() {
                     let formdata = new FormData();
                     formdata.append("condicion", document.getElementById("did").value)
                     axios.post("./api.php?accion=eliminarTienda", formdata)
-                        .then(function (response) {
+                        .then(function(response) {
                             console.log(response)
                         })
                 },
@@ -273,21 +278,20 @@
                 }
             },
             computed: {
-                calculototal: function () {
+                calculototal: function() {
                     var self = this;
                     var acum = 0;
                     for (var i = 0; i < 20; i++) { //self.evaluacion.length
-                        if (self.evaluacion[i].respuesta == 'bien')     //Bien valorado
-                            acum += parseInt(self.evaluacion[i].peso);  //suma
+                        if (self.evaluacion[i].respuesta == 'bien') //Bien valorado
+                            acum += parseInt(self.evaluacion[i].peso); //suma
                         else if (self.evaluacion[i].respuesta == 'mal') //mal valorado
-                            acum -= parseInt(self.evaluacion[i].peso);  //resta
+                            acum -= parseInt(self.evaluacion[i].peso); //resta
                     }
                     return acum;
                 }
             }
 
         })
-
     </script>
 </body>
 
