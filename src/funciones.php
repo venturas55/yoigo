@@ -34,19 +34,19 @@ function conectaDb()
     }
 }
 
-function privilegio()  //Devuelve admin, san o none, en funcion del privilegio
+/* function privilegio()
 {
     if (recogecookie('miprivilegio') == 'admin')
         return 'admin';
     return 'none';
-}
+} */
 
 function cabecera(){
     echo '
     <div class="cabecera">
         <div class="tabcontent">
             <div>
-                <a href="https://www.yoigo.com/" target="_blank"> <img class="logo" src="./img/Yoigo_logo_logotype_pink.png" alt="logo"> </a>
+                <a href="https://www.yoigo.com/" target="_blank"> <img id="logo" src="./img/Yoigo_logo_logotype_pink.png" alt="logo"> </a>
             </div>
             <div><h1>APP DE GESTION DE TIENDAS </h1></div>
             

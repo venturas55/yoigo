@@ -13,6 +13,7 @@
             -webkit-background-size: cover;
             -o-background-size: cover;
             background-attachment: fixed;
+           
         }
     </style>
 </head>
