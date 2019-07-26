@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 24-07-2019 a las 15:31:11
+-- Tiempo de generación: 26-07-2019 a las 01:40:11
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.23
 
@@ -158,6 +158,25 @@ INSERT INTO `tiendas` (`nombre`, `ubicacion`, `observacion`) VALUES
 ('MasLife', 'Lebara', 'Nueva Apertura 24/7'),
 ('YOIGO', 'PUERTO', 'ABIERTA'),
 ('YOIGO 2', 'Av Serreria', 'Inventada');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `usuario` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
+  `contrasena` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
+  `privilegio` varchar(20) COLLATE latin1_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci COMMENT='tabla de usuarios';
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`usuario`, `contrasena`, `privilegio`) VALUES
+('carla', 'narcisa', 'admin');
 
 --
 -- Índices para tablas volcadas
