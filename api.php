@@ -1,6 +1,6 @@
 <?php
-require "conexion.php";
-require "funciones.php";
+require "./src/conexion.php";
+require "./src/funciones.php";
 $conexion = new ApptivaDB();
 //accion = mostrar, insertar, editar y eliminar
 

@@ -1,5 +1,5 @@
 <?php
-    include './funciones.php';
+    include './src/funciones.php';
     $db = conectaDb();
 
     // usuario y contrasena recibidos del formulario  

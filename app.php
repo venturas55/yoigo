@@ -1,6 +1,6 @@
 <?php
 include './seguridad.php';
-include './funciones.php';
+include './src/funciones.php';
 ?>
 
 <!DOCTYPE html>

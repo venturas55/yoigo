@@ -24,8 +24,8 @@ function conectaDb()
 {
     //uso de las excepciones en php try y catch
     try {
-        //$db = new PDO("mysql:host=adriandecradmin.mysql.db;dbname=adriandecradmin", "adriandecradmin", "Administrador1");
-        $db = new PDO("mysql:host=localhost;dbname=yoigo", "root", "administrador");
+        $db = new PDO("mysql:host=adriandecradmin.mysql.db;dbname=adriandecradmin", "adriandecradmin", "Administrador1");
+        //$db = new PDO("mysql:host=localhost;dbname=yoigo", "root", "administrador");
         $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
         return ($db);
     } catch (PDOExcepton $e) {
