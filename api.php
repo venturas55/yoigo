@@ -167,6 +167,7 @@ switch ($accion) {
             $res['error'] = true;
         endif;
         break;
+
     case 'modificarTienda':
         $v0 = recoge('nombresel');
         $v1 = recoge('nombre');
@@ -185,8 +186,6 @@ switch ($accion) {
             $res['error'] = true;
         endif;
         break;
-
-
 
     case 'editar':
         echo "editar";
@@ -215,6 +214,7 @@ switch ($accion) {
 
 
     default:
+            $res['mensaje'] = "Case default";
         # <code class=""></code>
         break;
 }

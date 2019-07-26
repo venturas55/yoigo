@@ -149,25 +149,26 @@ include './funciones.php';
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- eliminar item -->
-            <div class="contenedor" v-if="verEliminaItem">
-                <div class="modal">
-                    <div class="header">
-                        <button class="close" @click="verEliminaItem=false">X</button>
-                        <h1>Eliminar tienda</h1>
-                    </div>
-                    <div class="contenido">
-                        <p> Está seguro de que desea borrar la tienda </p>
-                        <input type="hidden" id="did" name="did" v-model="elegida.nombre">
-                        <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
-                        <p>Esto también borrará su evaluacion</p>
-                        <button @click="verEliminaItem=false;eliminarTienda()">SI</button>
-                        <button @click="verEliminaItem=false">NO</button>
-                    </div>
+        <!-- eliminar item -->
+        <div class="contenedor" v-if="verEliminaItem">
+            <div class="modal">
+                <div class="header">
+                    <button class="close" @click="verEliminaItem=false">X</button>
+                    <h1>Eliminar tienda</h1>
+                </div>
+                <div class="contenido">
+                    <p> Está seguro de que desea borrar la tienda </p>
+                    <input type="hidden" id="did" name="did" v-model="elegida.nombre">
+                    <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
+                    <p>Esto también borrará su evaluacion</p>
+                    <button @click="verEliminaItem=false;eliminarTienda()">SI</button>
+                    <button @click="verEliminaItem=false">NO</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <?php pie() ?>
