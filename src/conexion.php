@@ -1,14 +1,14 @@
 <?php
 class ApptivaDB{
-/*     private $host = "localhost";
+    private $host = "localhost";
     private $usuario = "root";
     private $clave = "administrador";
-    private $dbname = "yoigo"; */
+    private $dbname = "yoigo";
 
-    private $host = "adriandecradmin.mysql.db";
+/*     private $host = "adriandecradmin.mysql.db";
     private $usuario = "adriandecradmin";
     private $clave = "Administrador1";
-    private $dbname = "adriandecradmin";
+    private $dbname = "adriandecradmin"; */
 
     public $conexion;
     public function __construct()

@@ -85,7 +85,7 @@ include './src/funciones.php';
             <div class="modal">
                 <div class="header">
                     <button class="close" @click="verModificar=false">X</button>
-                    <h1>MODIFICAR EVALUACION TIENDA</h1>
+                    <h1>MODIFICAR EVALUACION</h1>
                 </div>
                 <div class="contenido">
                     <p> {{elegida.nombre}} ubicada en {{elegida.ubicacion}}</p>
@@ -115,7 +115,7 @@ include './src/funciones.php';
             <div class="modal">
                 <div class="header">
                     <button class="close" @click="verEvaluacion=false">X</button>
-                    <h1>Mostrar Evaluacion</h1>
+                    <h1>MOSTRAR EVALUACION</h1>
                 </div>
                 <div class="contenido">
                     <div class="top">
@@ -156,7 +156,7 @@ include './src/funciones.php';
             <div class="modal">
                 <div class="header">
                     <button class="close" @click="verEliminaItem=false">X</button>
-                    <h1>Eliminar tienda</h1>
+                    <h1>ELIMINAR TIENDA</h1>
                 </div>
                 <div class="contenido">
                     <p> Está seguro de que desea borrar la tienda </p>
@@ -209,6 +209,7 @@ include './src/funciones.php';
                         .then(function(response) {
                             console.log(response)
                         })
+                    window.location.reload(true); //The parameter set to 'true' reloads a fresh copy from the server. Leaving it out will serve the page from cache.
                 },
                 mostrartiendas: function() {
                     axios.get("./api.php?accion=mostrarTiendas")
@@ -271,6 +272,7 @@ include './src/funciones.php';
                         .then(function(response) {
                             console.log(response)
                         })
+                    window.location.reload(true);
                 },
                 elegirTienda(tienda) {
                     var self = this;
