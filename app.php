@@ -7,7 +7,7 @@ include './src/funciones.php';
 <html lang="es">
 
 <head>
-    <title>Carla ODLC Yoigo</title>
+    <title>Carla ODLC Yoigo 1</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js"></script>

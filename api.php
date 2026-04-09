@@ -21,7 +21,7 @@ $res = array("error" => false);
 switch ($accion) {
 
     case 'mostrarTiendas':
-        $u = $conexion->buscar("tiendas", $condicion);
+        $u = $conexion->buscar("YOIGO_tiendas", $condicion);
         if ($u) :
             $res['respuesta'] = $u;
             $res['mensaje'] = "exito";
@@ -32,7 +32,7 @@ switch ($accion) {
         break;
 
     case 'mostrarPreguntas':
-        $u = $conexion->buscar("preguntas", $condicion);
+        $u = $conexion->buscar("YOIGO_preguntas", $condicion);
         if ($u) :
             $res['respuesta'] = $u;
             $res['mensaje'] = "exito";
@@ -43,7 +43,7 @@ switch ($accion) {
         break;
 
     case 'mostrarEvaluacion':
-        $e = $conexion->buscar("preguntas p, evaluaciones e", "p.id=e.id_pregunta and e.tienda='" . $condicion . "' order by p.id asc");
+        $e = $conexion->buscar("YOIGO_preguntas p, YOIGO_evaluaciones e", "p.id=e.id_pregunta and e.tienda='" . $condicion . "' order by p.id asc");
         $acum = 0;
         if ($e) :
             $res['respuesta'] = $e;
@@ -87,7 +87,7 @@ switch ($accion) {
         $v19 = "('" . $nombre . "','4004','')";
         $data = $v1 . "," . $v2 . "," . $v3 . "," . $v4 . "," . $v4bis . "," . $v5 . "," . $v6 . "," . $v7 . "," . $v8 . "," . $v9 . "," . $v10 . "," . $v11 . "," . $v12 . "," . $v13 . "," . $v14 . "," . $v15 . "," . $v16 . "," . $v17 . "," . $v18 . "," . $v19;
 
-        $e = $conexion->insertar("evaluaciones", $data);
+        $e = $conexion->insertar("YOIGO_evaluaciones", $data);
 
         if ($b && $e) :
             $res['mensaje'] = "Insercion exitosa";
@@ -104,7 +104,7 @@ switch ($accion) {
 
         $data = "('" . $nombre . "','" . $ubicacion . "','" . $observacion . "')";
 
-        $b = $conexion->insertar("preguntas", $data);
+        $b = $conexion->insertar("YOIGO_preguntas", $data);
 
         if ($b) :
             $res['mensaje'] = "Insercion exitosa";
@@ -115,8 +115,8 @@ switch ($accion) {
         break;
 
     case 'modificarEvaluacion':
-        $tienda = recoge('tienda');
-        $e = $conexion->borrar("evaluaciones", "tienda='" . $tienda . "'");
+        $tienda = recoge('YOIGO_tienda');
+        $e = $conexion->borrar("YOIGO_evaluaciones", "tienda='" . $tienda . "'");
 
         $v1 = "('" . $tienda . "','1001','" . recoge('r1001') . "')";
         $v2 = "('" . $tienda . "','1002','" . recoge('r1002') . "')";
@@ -140,7 +140,7 @@ switch ($accion) {
         $v19 = "('" . $tienda . "','4004','" . recoge('r4004') . "')";
         $data = $v1 . "," . $v2 . "," . $v3 . "," . $v4 . "," . $v4bis . "," . $v5 . "," . $v6 . "," . $v7 . "," . $v8 . "," . $v9 . "," . $v10 . "," . $v11 . "," . $v12 . "," . $v13 . "," . $v14 . "," . $v15 . "," . $v16 . "," . $v17 . "," . $v18 . "," . $v19;
 
-        $b = $conexion->insertar("evaluaciones", $data);
+        $b = $conexion->insertar("YOIGO_evaluaciones", $data);
         if ($b) :
             $res['mensaje'] = "Insercion exitosa";
         else :
@@ -157,7 +157,7 @@ switch ($accion) {
         $campos = "id='" . $v1 . "', pregunta='" . $v2 . "',peso=" . $v3;
         $condicion = "id='" . $v0 . "'";
         $res['consulta'] = "update preguntas set ".$campos." where ".$condicion;
-        $b = $conexion->actualizar("preguntas", $campos, $condicion);
+        $b = $conexion->actualizar("YOIGO_preguntas", $campos, $condicion);
         if ($b) :
             $res['mensaje'] = "Modificación exitosa";
             
@@ -176,7 +176,7 @@ switch ($accion) {
         $campos ="nombre='" . $v1 .     "', ubicacion='" . $v2 . "',observacion='" . $v3 . "'";
         $condicion = "nombre='" . $v0 . "'";
         $res['consulta'] = "update tiendas set ".$campos." where ".$condicion;
-        $b = $conexion->actualizar("tiendas", $campos, $condicion);
+        $b = $conexion->actualizar("YOIGO_tiendas", $campos, $condicion);
         if ($b) :
             $res['mensaje'] = "Modificación tienda exitosa";
            
@@ -192,8 +192,8 @@ switch ($accion) {
         break;
 
     case 'eliminarTienda':
-        $e = $conexion->borrar("evaluaciones", "tienda='" . $condicion . "'");
-        $t = $conexion->borrar("tiendas", "nombre='" . $condicion . "'");
+        $e = $conexion->borrar("YOIGO_evaluaciones", "tienda='" . $condicion . "'");
+        $t = $conexion->borrar("YOIGO_tiendas", "nombre='" . $condicion . "'");
         if ($e && $t) :
             $res['mensaje'] = "Borrado exitoso";
         else :
@@ -203,7 +203,7 @@ switch ($accion) {
         break;
 
     case 'eliminarPregunta':
-        $t = $conexion->borrar("preguntas", "id='" . $condicion . "'");
+        $t = $conexion->borrar("YOIGO_preguntas", "id='" . $condicion . "'");
         if ($t) :
             $res['mensaje'] = "Borrado de pregunta exitoso";
         else :

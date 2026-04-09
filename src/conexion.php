@@ -1,18 +1,18 @@
 <?php
 class ApptivaDB{
-    private $host = "localhost";
-    private $usuario = "root";
-    private $clave = "administrador";
-    private $dbname = "yoigo";
-
-/*     private $host = "adriandecradmin.mysql.db";
-    private $usuario = "adriandecradmin";
-    private $clave = "Administrador1";
-    private $dbname = "adriandecradmin"; */
+    private $host;
+    private $usuario;
+    private $clave;
+    private $dbname; 
 
     public $conexion;
     public function __construct()
     {
+        $this->host = $_ENV['DB_HOST'] ?? 'localhost';
+        $this->usuario = $_ENV['DB_USER'] ?? 'root';
+        $this->clave = $_ENV['DB_PASS'] ?? '';
+        $this->dbname = $_ENV['DB_NAME'] ?? '';
+
         $this->conexion = new mysqli($this->host, $this->usuario, $this->clave, $this->dbname)
             or die(mysql_error());
         $this->conexion->set_charset("utf8");

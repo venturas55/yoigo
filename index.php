@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title>Carla ODLC Yoigo</title>
+    <title>Carla ODLC Yoigo 1</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/style.css">
     <style type="text/css">
@@ -13,7 +13,6 @@
             -webkit-background-size: cover;
             -o-background-size: cover;
             background-attachment: fixed;
-           
         }
     </style>
 </head>
